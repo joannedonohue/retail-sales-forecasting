@@ -1,46 +1,98 @@
-# Retail Sales Forecasting with Machine Learning
+# Retail Sales Forecasting
 
-Predictive models for retail demand planning using real-world Walmart sales data, with a secondary analysis on cardiovascular disease classification.
+Predictive models for retail demand planning using Walmart sales data — achieving R² = 0.96 with Random Forest and Gradient Boosting on weekly sales forecasting.
+
+---
 
 ## Overview
 
-This project builds and evaluates machine learning models to forecast weekly sales across Walmart store departments. Accurate demand forecasting is critical in retail operations — reducing overstock, preventing stockouts, and informing promotional strategy.
+This project builds machine learning models to forecast weekly retail sales across Walmart store types, with a secondary analysis applying classification to cardiovascular disease risk data. The primary forecasting pipeline identifies store type and temperature as the strongest demand signals, and flags holiday markdown periods as significant sales drivers.
+
+---
 
 ## Key Results
 
-- **R² = 0.96** on Walmart weekly sales forecasting
-- Top predictors: **store type** and **temperature** (seasonal demand signals)
-- Holiday markdown periods identified as significant sales drivers
-- Secondary model: **71% accuracy** on cardiovascular disease risk classification
+| Task | Model | Metric | Score |
+|---|---|---|---|
+| Weekly sales forecasting | Random Forest / Gradient Boosting | R² | **0.96** |
+| Disease risk classification | Classification model | Accuracy | **71%** |
+
+---
 
 ## Dataset
 
-- Walmart historical weekly sales across multiple store types and departments
-- Features include temperature, fuel price, CPI, unemployment rate, and holiday flags
-- Bureau of Labor Statistics supplementary data
+- **Primary:** Walmart historical weekly sales data across multiple store types
+- **Features:** Store type, temperature, fuel price, CPI, unemployment rate, holiday indicators
+- **Secondary:** Bureau of Labor Statistics supplementary employment data
+
+---
+
+## Top Predictors (Feature Importance)
+
+1. **Store type** — accounts for largest variance in weekly sales volume
+2. **Temperature** — seasonal demand signal with strong predictive weight
+3. **Holiday markdown periods** — significant uplift events requiring separate modeling consideration
+
+---
+
+## Models
+
+- **Random Forest** — primary ensemble model; handles non-linear interactions between store, region, and economic variables
+- **Gradient Boosting** — secondary ensemble; captures sequential patterns in time-ordered data
+- **Linear Regression** — baseline comparison
+
+---
+
+## Methodology
+
+1. Load Walmart historical sales and supplementary BLS data
+2. Engineer features: holiday flags, store type encoding, economic indicator normalization
+3. Train and evaluate Random Forest, Gradient Boosting, and Linear Regression
+4. Analyze feature importance to identify primary demand drivers
+5. Separately apply classification models to cardiovascular disease risk dataset
+
+---
 
 ## Tech Stack
 
-![Python](https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white)
-![scikit-learn](https://img.shields.io/badge/scikit--learn-F7931E?style=flat-square&logo=scikit-learn&logoColor=white)
-![Pandas](https://img.shields.io/badge/Pandas-150458?style=flat-square&logo=pandas&logoColor=white)
-![Matplotlib](https://img.shields.io/badge/Matplotlib-11557c?style=flat-square)
+| Component | Tool |
+|---|---|
+| Machine learning | scikit-learn |
+| Data manipulation | pandas |
+| Visualization | Matplotlib, Seaborn |
+| Language | Python |
 
-- **Models**: Random Forest, Gradient Boosting, Linear Regression
-- **Evaluation**: R², RMSE, feature importance analysis
-- **Visualization**: Matplotlib, Seaborn
+---
 
-## Project Structure
+## Repository Structure
 
 ```
-├── FInal_Walmart_Sales_Predict.ipynb   # Main forecasting notebook
-├── walmart_weekly_sales_v1.py          # Sales model script v1
-├── walmart_weekly_sales_v2.py          # Sales model script v2
-├── walmart_holiday_predict_app.py      # Holiday prediction app
-├── Resources/                          # Source datasets
+retail-sales-forecasting/
+├── retail_sales_forecasting.ipynb          # Main forecasting notebook
+├── Untitled1.ipynb                         # Exploratory analysis
+├── walmart_holiday_predict_app.py          # Holiday prediction application
+├── walmart_holiday_predict_v2.py           # Iterated holiday model
+├── walmart_weekly_sales_v1.py              # Weekly sales model v1
+├── walmart_weekly_sales_v2.py              # Weekly sales model v2
+├── AI Bootcamp Project 2 - Group 3 Walmart.pdf   # Presentation slides
+├── Resources/                              # Input datasets
 └── README.md
 ```
 
-## Business Context
+---
 
-Demand forecasting directly impacts supply chain efficiency, inventory investment, and promotional ROI — core levers in consumer goods and retail strategy. This analysis demonstrates the ability to translate raw transactional data into actionable forecasting insights at scale.
+## Outcomes
+
+- Achieved **R² = 0.96** on Walmart weekly sales forecasting — the model explains 96% of sales variance
+- Identified store type and temperature as primary demand signals, providing actionable guidance for inventory and staffing planning
+- Discovered holiday markdown periods as significant non-linear demand events requiring special-case handling
+- Produced a deployable holiday prediction application alongside the core forecasting pipeline
+
+---
+
+## Getting Started
+
+```bash
+pip install scikit-learn pandas matplotlib seaborn
+jupyter notebook retail_sales_forecasting.ipynb
+```
