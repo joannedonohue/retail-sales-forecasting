@@ -6,7 +6,7 @@ Predictive models for retail demand planning using Walmart sales data — achiev
 
 ## Overview
 
-This project builds machine learning models to forecast weekly retail sales across Walmart store types, with a secondary analysis applying classification to cardiovascular disease risk data. The primary forecasting pipeline identifies store type and temperature as the strongest demand signals, and flags holiday markdown periods as significant sales drivers.
+This project builds machine learning models to forecast weekly retail sales across Walmart store types. The forecasting pipeline identifies store type and temperature as the strongest demand signals, and flags holiday markdown periods as significant sales drivers.
 
 ---
 
@@ -15,7 +15,6 @@ This project builds machine learning models to forecast weekly retail sales acro
 | Task | Model | Metric | Score |
 |---|---|---|---|
 | Weekly sales forecasting | Random Forest / Gradient Boosting | R² | **0.96** |
-| Disease risk classification | Classification model | Accuracy | **71%** |
 
 ---
 
@@ -49,7 +48,6 @@ This project builds machine learning models to forecast weekly retail sales acro
 2. Engineer features: holiday flags, store type encoding, economic indicator normalization
 3. Train and evaluate Random Forest, Gradient Boosting, and Linear Regression
 4. Analyze feature importance to identify primary demand drivers
-5. Separately apply classification models to cardiovascular disease risk dataset
 
 ---
 
@@ -69,12 +67,12 @@ This project builds machine learning models to forecast weekly retail sales acro
 ```
 retail-sales-forecasting/
 ├── retail_sales_forecasting.ipynb          # Main forecasting notebook
-├── Untitled1.ipynb                         # Exploratory analysis
+├── exploratory_analysis.ipynb              # Exploratory analysis
 ├── walmart_holiday_predict_app.py          # Holiday prediction application
 ├── walmart_holiday_predict_v2.py           # Iterated holiday model
 ├── walmart_weekly_sales_v1.py              # Weekly sales model v1
 ├── walmart_weekly_sales_v2.py              # Weekly sales model v2
-├── AI Bootcamp Project 2 - Group 3 Walmart.pdf   # Presentation slides
+├── Retail_Sales_Forecasting_Presentation.pdf   # Presentation slides
 ├── Resources/                              # Input datasets
 └── README.md
 ```
